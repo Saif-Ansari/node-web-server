@@ -3,6 +3,9 @@ const hbs = require('hbs');
 const fs = require('fs');
 var app = express();
 
+//for heroku 
+const port = process.env.PORT || 3000;
+
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('toUpper', (text) =>{
   return  text.toUpperCase();
@@ -57,6 +60,10 @@ app.get('/bad',(req,res) => {
      });
 });
 
-app.listen(3000 , () =>{
-    console.log('server is up on port 3000')
+// app.listen(3000 , () =>{
+//     console.log('server is up on port 3000')
+// });
+// for heroku
+app.listen(port , () =>{
+    console.log(`server is up on port :${port}` )
 });
